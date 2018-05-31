@@ -1,0 +1,83 @@
+    <!-- PROCESADO -->
+    <div class="blog-header">
+      <div class="container">
+        <!-- <h2 class="blog-title">Pregunta procesada: {[{query}]}</h2> -->
+        <p class="lead blog-description">Cantidad de resultados: <b>{[{discovery.matching_results}]}</b></p>
+      </div>
+    </div>
+
+    <div class="container" >        
+      <div class="row">
+        <div class='blog-main col-md-8'>
+          <div class="blog-post">
+            <div class="resultados" ng-repeat="entitieDiscovery in discovery.results">
+                <a ng-href="#!/view-documento/{[{entitieDiscovery.id}]}">{[{entitieDiscovery.extracted_metadata.filename}]}</a>
+                <p>{[{entitieDiscovery.score}]}</p>
+                <!-- <b class="entidadok" >{[{entitieDiscovery.extracted_metadata.filename}]}</b> -->
+                <div ng-repeat="htmlValue in entitieDiscovery.highlight.html">
+                    <div ng-bind-html="htmlValue"></div>
+                </div>
+                <br/>
+            </div>
+            <!-- -->
+
+          </div><!-- /.blog-post -->
+<!--
+        <p class="lead blog-description">Cantidad de resultados: <b>{[{discovery.matching_results}]}</b></p>
+        <p class="lead blog-description">Desde: <b>{[{offset}]}</b></p>
+        <p class="lead blog-description">Hasta: <b>{[{offsetshow}]}</b></p>
+
+-->
+<!--
+          <nav class="blog-pagination">
+            <a class="btn btn-outline-primary" ng-class="firstDoc()" ng-click="antRes()">Página Anterior</a>
+            <a class="btn btn-outline-secondary " ng-class="lastDoc()" ng-click="nextRes()">Página Siguiente</a>              
+
+              
+          </nav>
+-->
+          </div><!-- /.blog-main -->
+          
+    
+        <div class="col-sm-4 blog-sidebar">
+            <div class="sidebar-module sidebar-module-inset">
+            <h3>Entidades</h3>
+                <input type="checkbox" id="consulta_or" value="operador_or">Busqueda con OR (ó)
+                <button class="btn btn-primary float-right" ng-click="imChanged()">Buscar Discovery</button>
+                <table style="width:100%">
+                    <tr>
+                        <th>Organización</th>
+                        <th>Cantidad de menciones</th>
+                    </tr>
+                    <tr ng-repeat="entitie in nlu.entities  | filter: {type: 'ORGANIZACION'}">
+                        <td>
+                            <input type="checkbox" data-checklist-model="user.entities" data-checklist-value="entitie">
+                            {[{entitie.text}]}
+                        </td>
+                        <td ng-show="cantdocus">{[{entitie.count}]}
+                        </td>
+                    </tr>
+                </table>
+                <table style="width:100%">
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Cantidad de menciones</th>
+                    </tr>
+                    <tr ng-repeat="entitie in nlu.entities  | filter: {type: 'SERVICIO'}">
+                        <td>
+                            <input type="checkbox" data-checklist-model="user.entities" data-checklist-value="entitie">
+                            {[{entitie.text}]}
+                        </td>
+                        <td ng-show="cantdocus">{[{entitie.count}]}
+                        </td>
+                    </tr>
+                </table>
+          </div>
+        </div>
+          
+          
+          
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+
+    <!-- FIN PROCESADO -->

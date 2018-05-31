@@ -1,0 +1,44 @@
+    <!-- PROCESADO -->
+    <div class="blog-header">
+      <div class="container">
+        <h6 class="blog-title">{[{documento.extracted_metadata.filename}]}</h6>
+      </div>
+    </div>
+
+    <div class="container" >
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+          <div class="blog-post" ng-bind-html="documento.html"> </div><!-- /.blog-post -->
+          <!-- <div class="blog-post" ng-bind-html="discovery.results[discoveryIndex].html"> </div><!-- /.blog-post --> -->
+
+          <nav class="blog-pagination">
+            <!-- <a class="btn btn-outline-primary disabled" ng-click="antDiscDocu()">Página Anterior</a> -->
+            <a class="btn btn-outline-primary" ng-class="firstDoc()" ng-click="antDiscDocu()">Documento Anterior</a>
+            <a class="btn btn-outline-secondary " ng-class="lastDoc()" ng-click="nextDiscDocu()">Documento Siguiente</a>
+          </nav>
+
+        </div><!-- /.blog-main -->
+          
+        <div class="col-sm-4  blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Entidades</h4>
+              <div ng-repeat="htmlValue in documento.enriched_text.entities | unique : 'text'">
+                    <div>{[{htmlValue.text}]}</div>
+              </div>
+            <h4>Conceptos</h4>
+              <div ng-repeat="htmlValue in documento.enriched_text.concepts">
+                    <div>{[{htmlValue.text}]}</div>
+              </div>
+                    <h4>Categorias</h4>
+              <div ng-repeat="htmlValue in documento.enriched_text.categories">
+                    <div>{[{htmlValue.label}]}</div>
+              </div>
+          </div>
+        </div>
+      
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+    </footer>
+    <!-- FIN PROCESADO -->
