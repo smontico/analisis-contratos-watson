@@ -110,7 +110,7 @@ var app = angular.module('myapp.view-resultado', ['ngRoute', 'ngResource'])
     
     $scope.getDiscoveryQuery = function () {
         // Query example: 
-        //                "enriched_text.entities.type::'Servicio',enriched_text.concepts.text::'Antel',enriched_text.entities.text::'servicios de telecomunicaciones';
+        //                "enriched_text.entities.type::'Servicio',enriched_text.concepts.text::'Acme',enriched_text.entities.text::'servicios de consultoria';
         // Url   example:
         //                    
         var query_or = document.getElementById('consulta_or').checked;

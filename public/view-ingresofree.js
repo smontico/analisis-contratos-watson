@@ -11,7 +11,7 @@ angular.module('myapp.view-ingresofree', ['ngRoute', 'ngResource'])
     .controller('ViewCtrlIngresoFree', function ($scope, $location, UserService, $rootScope) {
         'use strict';
 
-        $scope.myloader = UserService.getLoader(); //https://stackoverflow.com/questions/29769804/getting-and-setting-value-in-factory-in-angualrjs
+        $scope.myloader = UserService.getLoader();
     
         $rootScope.$on("updates",function(){
             $scope.myloader = UserService.getLoader();
